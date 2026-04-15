@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>William Mulrine</title>
+    <script>
+        // Store the full URL in sessionStorage and redirect to the root so
+        // index.html can restore it and let the Blazor Router handle the route.
+        sessionStorage.redirect = location.href;
+        var base = location.protocol + '//' + location.host + '/resume/';
+        location.replace(base);
+    </script>
+</head>
+<body></body>
+</html>
