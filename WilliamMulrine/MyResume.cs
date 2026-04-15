@@ -17,7 +17,8 @@ public static class ResumeContent
         Availability: "",
 
         Links: new()
-        {            
+        {
+            new ResumeLink("GitHub", "https://github.com/wmulrine99/resume"),
             new ResumeLink("LinkedIn", "https://www.linkedin.com/in/billy-mulrine-000726a0/"),
         },
 
