@@ -1,0 +1,397 @@
+@page "/"
+@using WilliamMulrine.Models
+@using System.Text
+@using System.Text.Json
+@inject IJSRuntime JS
+
+<PageTitle>
+    @(_resume.Name)@(!string.IsNullOrEmpty(_resume.Name) && !string.IsNullOrEmpty(_resume.Title) ? $" — {_resume.Title}" : _resume.Title)
+</PageTitle>
+
+<div class="resume-shell">
+
+    <div class="bg-grid" aria-hidden="true"></div>
+
+    <header class="resume-header">
+        <div class="header-inner">
+
+            @if (!string.IsNullOrEmpty(_resume.Name) || !string.IsNullOrEmpty(_resume.Title))
+            {
+                <div class="header-name-block">
+                    @if (!string.IsNullOrEmpty(_resume.Name))
+                    {
+                        var spaceIdx  = _resume.Name.IndexOf(' ');
+                        var nameFirst = spaceIdx >= 0 ? _resume.Name[..spaceIdx]       : _resume.Name;
+                        var nameLast  = spaceIdx >= 0 ? _resume.Name[(spaceIdx + 1)..] : null;
+                        <h1 class="name">@nameFirst@(!string.IsNullOrEmpty(nameLast) ? " " + nameLast : "")</h1>
+                    }
+                    @if (!string.IsNullOrEmpty(_resume.Title))
+                    {
+                        <span class="title-tag">@_resume.Title</span>
+                    }
+                </div>
+            }
+
+            <nav class="header-nav">
+                @if (_resume.Experience?.Count > 0)  { <a href="#experience">Experience</a> }
+                @if (_resume.Projects?.Count > 0)    { <a href="#projects">Projects</a>    }
+                @if (_resume.Skills?.Count > 0)      { <a href="#skills">Skills</a>        }
+                @if (_resume.Education?.Count > 0)   { <a href="#education">Education</a>  }
+                <button class="theme-toggle" onclick="toggleTheme()">
+                    <span class="show-on-light">[ dark ]</span>
+                    <span class="show-on-dark">[ light ]</span>
+                </button>
+            </nav>
+
+        </div>
+
+        @{
+            var contactParts = new List<(string Text, string? Href)>();
+            if (!string.IsNullOrEmpty(_resume.Location))
+                contactParts.Add((_resume.Location, null));
+            if (!string.IsNullOrEmpty(_resume.Email))
+                contactParts.Add((_resume.Email, $"mailto:{_resume.Email}"));
+            if (!string.IsNullOrEmpty(_resume.Availability))
+                contactParts.Add((_resume.Availability, null));
+            if (_resume.Links != null)
+                foreach (var l in _resume.Links)
+                    if (!string.IsNullOrEmpty(l.Name) && !string.IsNullOrEmpty(l.Link))
+                        contactParts.Add((l.Name, l.Link));
+        }
+        @if (contactParts.Count > 0)
+        {
+            <div class="header-contact">
+                @for (int i = 0; i < contactParts.Count; i++)
+                {
+                    if (i > 0) { <span class="dot">·</span> }
+                    @if (contactParts[i].Href != null)
+                    {
+                        <a href="@contactParts[i].Href" target="_blank" rel="noopener noreferrer">@contactParts[i].Text</a>
+                    }
+                    else
+                    {
+                        <span>@contactParts[i].Text</span>
+                    }
+                }
+            </div>
+        }
+
+        <div class="header-downloads">
+            <button class="download-link--styled" @onclick="DownloadStyled">styled</button>
+            <button class="download-link" @onclick="DownloadAts">ats</button>
+        </div>
+
+    </header>
+
+    <main class="resume-main">
+
+        @if (_resume.Experience?.Count > 0)
+        {
+            <section id="experience" class="section">
+                <div class="section-label">Experience</div>
+                <div class="section-content">
+                    @foreach (var job in _resume.Experience)
+                    {
+                        var stints = job.Stints ?? new();
+                        <article class="job-card fade-in">
+                            @for (int i = 0; i < stints.Count; i++)
+                            {
+                                if (i > 0) { <div class="stint-divider"></div> }
+                                <div class="job-meta">
+                                    @if (i == 0)
+                                    {
+                                        @if (!string.IsNullOrEmpty(job.Company))
+                                        {
+                                            <div class="job-company">@job.Company</div>
+                                        }
+                                        @if (!string.IsNullOrEmpty(job.Location))
+                                        {
+                                            <div class="job-location">@job.Location</div>
+                                        }
+                                    }
+                                    @if (!string.IsNullOrEmpty(stints[i].DateRange))
+                                    {
+                                        <div class="job-date">@stints[i].DateRange</div>
+                                    }
+                                </div>
+                                <div class="job-body">
+                                    @if (!string.IsNullOrEmpty(stints[i].Title))
+                                    {
+                                        <h3 class="job-title">@stints[i].Title</h3>
+                                    }
+                                    @if (stints[i].Bullets?.Count > 0)
+                                    {
+                                        <ul class="job-bullets">
+                                            @foreach (var bullet in stints[i].Bullets!)
+                                            {
+                                                @if (!string.IsNullOrEmpty(bullet))
+                                                {
+                                                    <li>@bullet</li>
+                                                }
+                                            }
+                                        </ul>
+                                    }
+                                </div>
+                            }
+                        </article>
+                    }
+                </div>
+            </section>
+        }
+
+@if (_resume.Projects?.Count > 0)
+        {
+            <section id="projects" class="section">
+                <div class="section-label">@(_resume.Projects!.Count == 1 ? "Project Highlight" : "Project Highlights")</div>
+                <div class="section-content">
+                    @foreach (var project in _resume.Projects)
+                    {
+                        <article class="project-card fade-in">
+                            @if (!string.IsNullOrEmpty(project.Name) || !string.IsNullOrEmpty(project.Subtitle))
+                            {
+                                <div class="project-header">
+                                    @if (!string.IsNullOrEmpty(project.Name))
+                                    {
+                                        <h3 class="project-name">@project.Name</h3>
+                                    }
+                                    @if (!string.IsNullOrEmpty(project.Subtitle))
+                                    {
+                                        <p class="project-sub">@project.Subtitle</p>
+                                    }
+                                </div>
+                            }
+                            @if (project.Bullets?.Count > 0)
+                            {
+                                <ul class="job-bullets">
+                                    @foreach (var bullet in project.Bullets!)
+                                    {
+                                        @if (!string.IsNullOrEmpty(bullet))
+                                        {
+                                            <li>@bullet</li>
+                                        }
+                                    }
+                                </ul>
+                            }
+                            @if (project.Stats?.Count > 0)
+                            {
+                                <div class="impact-bar">
+                                    <div class="impact-label">Impact</div>
+                                    <div class="impact-stats">
+                                        @foreach (var stat in project.Stats!)
+                                        {
+                                            @if (!string.IsNullOrEmpty(stat.Value) || !string.IsNullOrEmpty(stat.Label))
+                                            {
+                                                <div class="stat-block">
+                                                    @if (!string.IsNullOrEmpty(stat.Value))
+                                                    {
+                                                        <span class="stat-value">@stat.Value</span>
+                                                    }
+                                                    @if (!string.IsNullOrEmpty(stat.Label))
+                                                    {
+                                                        <span class="stat-label">@stat.Label</span>
+                                                    }
+                                                </div>
+                                            }
+                                        }
+                                    </div>
+                                    @if (!string.IsNullOrEmpty(project.ImpactNote))
+                                    {
+                                        <p class="impact-note">@project.ImpactNote</p>
+                                    }
+                                </div>
+                            }
+                        </article>
+                    }
+                </div>
+            </section>
+        }
+
+        @if (_resume.Skills?.Count > 0)
+        {
+            <section id="skills" class="section">
+                <div class="section-label">Skills</div>
+                <div class="section-content">
+                    <div class="skills-grid fade-in">
+                        @foreach (var group in _resume.Skills!)
+                        {
+                            @if (group.Skills?.Count > 0)
+                            {
+                                <div class="skill-group">
+                                    @if (!string.IsNullOrEmpty(group.Category))
+                                    {
+                                        <div class="skill-category">@group.Category</div>
+                                    }
+                                    <div class="skill-tags">
+                                        @foreach (var skill in group.Skills!)
+                                        {
+                                            @if (!string.IsNullOrEmpty(skill))
+                                            {
+                                                <span class="skill-tag">@skill</span>
+                                            }
+                                        }
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            </section>
+        }
+
+        @if (_resume.Education?.Count > 0)
+        {
+            <section id="education" class="section">
+                <div class="section-label">Education</div>
+                <div class="section-content">
+                    @foreach (var edu in _resume.Education!)
+                    {
+                        <article class="edu-card fade-in">
+                            <div class="job-meta">
+                                @if (!string.IsNullOrEmpty(edu.School))
+                                {
+                                    <div class="job-company">@edu.School</div>
+                                }
+                                @if (!string.IsNullOrEmpty(edu.Location))
+                                {
+                                    <div class="job-location">@edu.Location</div>
+                                }
+                            </div>
+                            @if (!string.IsNullOrEmpty(edu.Degree))
+                            {
+                                <div class="job-body">
+                                    <h3 class="job-title">@edu.Degree</h3>
+                                </div>
+                            }
+                        </article>
+                    }
+                </div>
+            </section>
+        }
+
+    </main>
+
+    @if (!string.IsNullOrEmpty(_resume.Name) || !string.IsNullOrEmpty(_resume.Title))
+    {
+        <footer class="resume-footer">
+            @if (!string.IsNullOrEmpty(_resume.Name))
+            {
+                <span>@_resume.Name</span>
+            }
+            @if (!string.IsNullOrEmpty(_resume.Name) && !string.IsNullOrEmpty(_resume.Title))
+            {
+                <span class="dot">·</span>
+            }
+            @if (!string.IsNullOrEmpty(_resume.Title))
+            {
+                <span>@_resume.Title</span>
+            }
+        </footer>
+    }
+
+</div>
+
+@code {
+    private static readonly Resume _resume = ResumeContent.Data;
+
+    private async Task DownloadStyled() =>
+        await JS.InvokeVoidAsync("eval", "window.print()");
+
+    private async Task DownloadAts()
+    {
+        var filename = string.IsNullOrEmpty(_resume.Name)
+            ? "resume-ats.txt"
+            : _resume.Name.ToLowerInvariant().Replace(' ', '-') + "-ats.txt";
+        var text = JsonSerializer.Serialize(BuildAtsText());
+        var file = JsonSerializer.Serialize(filename);
+        var js   = "(function(){var b=new Blob([" + text + "],{type:'text/plain'});"
+                 + "var u=URL.createObjectURL(b);var a=document.createElement('a');"
+                 + "a.href=u;a.download=" + file + ";"
+                 + "document.body.appendChild(a);a.click();"
+                 + "document.body.removeChild(a);URL.revokeObjectURL(u);})()";
+        await JS.InvokeVoidAsync("eval", js);
+    }
+
+    private static string BuildAtsText()
+    {
+        var sb = new StringBuilder();
+
+        if (!string.IsNullOrEmpty(_resume.Name))  sb.AppendLine(_resume.Name.ToUpperInvariant());
+        if (!string.IsNullOrEmpty(_resume.Title)) sb.AppendLine(_resume.Title);
+
+        var contact = new List<string>();
+        if (!string.IsNullOrEmpty(_resume.Location))     contact.Add(_resume.Location);
+        if (!string.IsNullOrEmpty(_resume.Email))        contact.Add(_resume.Email);
+        if (!string.IsNullOrEmpty(_resume.Availability)) contact.Add(_resume.Availability);
+        if (_resume.Links != null)
+            foreach (var l in _resume.Links)
+                if (!string.IsNullOrEmpty(l.Link)) contact.Add(l.Link);
+        if (contact.Count > 0) sb.AppendLine(string.Join(" | ", contact));
+
+        if (_resume.Experience?.Count > 0)
+        {
+            sb.AppendLine(); sb.AppendLine("EXPERIENCE"); sb.AppendLine(new string('-', 50));
+            foreach (var job in _resume.Experience)
+            {
+                foreach (var stint in job.Stints ?? [])
+                {
+                    sb.AppendLine();
+                    var company = string.IsNullOrEmpty(job.Location)
+                        ? job.Company
+                        : $"{job.Company} - {job.Location}";
+                    sb.AppendLine(company);
+                    sb.AppendLine($"{stint.Title} | {stint.DateRange}");
+                    if (stint.Bullets?.Count > 0)
+                        foreach (var b in stint.Bullets)
+                            if (!string.IsNullOrEmpty(b)) sb.AppendLine($"- {b}");
+                }
+            }
+        }
+
+        if (_resume.Projects?.Count > 0)
+        {
+            sb.AppendLine(); sb.AppendLine("PROJECTS"); sb.AppendLine(new string('-', 50));
+            foreach (var p in _resume.Projects)
+            {
+                sb.AppendLine();
+                if (!string.IsNullOrEmpty(p.Name))     sb.AppendLine(p.Name);
+                if (!string.IsNullOrEmpty(p.Subtitle)) sb.AppendLine(p.Subtitle);
+                if (p.Bullets?.Count > 0)
+                    foreach (var b in p.Bullets)
+                        if (!string.IsNullOrEmpty(b)) sb.AppendLine($"- {b}");
+                if (p.Stats?.Count > 0)
+                {
+                    var stats = p.Stats
+                        .Where(s => !string.IsNullOrEmpty(s.Value) || !string.IsNullOrEmpty(s.Label))
+                        .Select(s => $"{s.Value} {s.Label}".Trim());
+                    sb.AppendLine($"Impact: {string.Join(" | ", stats)}");
+                }
+                if (!string.IsNullOrEmpty(p.ImpactNote)) sb.AppendLine(p.ImpactNote);
+            }
+        }
+
+        if (_resume.Skills?.Count > 0)
+        {
+            sb.AppendLine(); sb.AppendLine("SKILLS"); sb.AppendLine(new string('-', 50));
+            sb.AppendLine();
+            foreach (var g in _resume.Skills)
+                if (g.Skills?.Count > 0)
+                    sb.AppendLine($"{g.Category}: {string.Join(", ", g.Skills)}");
+        }
+
+        if (_resume.Education?.Count > 0)
+        {
+            sb.AppendLine(); sb.AppendLine("EDUCATION"); sb.AppendLine(new string('-', 50));
+            foreach (var e in _resume.Education)
+            {
+                sb.AppendLine();
+                var school = string.IsNullOrEmpty(e.Location)
+                    ? e.School
+                    : $"{e.School} - {e.Location}";
+                sb.AppendLine(school);
+                if (!string.IsNullOrEmpty(e.Degree)) sb.AppendLine(e.Degree);
+            }
+        }
+
+        return sb.ToString();
+    }
+}

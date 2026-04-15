@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="William Mulrine — Senior Software Engineer specializing in C#, Azure, Kubernetes, and cloud-native architecture." />
+    <meta name="author" content="William Mulrine" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="William Mulrine — Senior Software Engineer" />
+    <meta property="og:description" content="Cloud-native engineer with expertise in C#, Azure, Databricks, Kubernetes, and ETL pipeline architecture." />
+    <meta property="og:type" content="website" />
+
+    <title>William Mulrine — Senior Software Engineer</title>
+    <base href="/" />
+
+    <!-- Apply saved theme, disable scroll restoration, and strip hash before first paint -->
+    <script>
+        // Decode the SPA redirect from 404.html back into a real URL
+        (function () {
+            var redirect = sessionStorage.redirect;
+            delete sessionStorage.redirect;
+            if (redirect && redirect !== location.href) {
+                history.replaceState(null, null, redirect);
+            }
+        })();
+    </script>
+    <script>
+        (function () {
+            var t = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', t);
+            if (history.scrollRestoration) {
+                history.scrollRestoration = 'manual';
+            }
+            if (window.location.hash) {
+                history.replaceState(null, '', window.location.pathname + window.location.search);
+            }
+        })();
+    </script>
+
+    <link rel="stylesheet" href="css/app.css" />
+</head>
+<body>
+    <div id="app">
+        <!-- Loading state while Blazor initializes -->
+        <div class="app-loading">
+            Loading...
+        </div>
+    </div>
+
+    <div id="blazor-error-ui" style="display:none">
+        An unhandled error has occurred.
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            var html = document.documentElement;
+            var current = html.getAttribute('data-theme') || 'light';
+            var next = current === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+        }
+
+</script>
+
+    <script src="_framework/blazor.webassembly.js"></script>
+</body>
+</html>

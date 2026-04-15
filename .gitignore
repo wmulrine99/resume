@@ -1,0 +1,28 @@
+# Local-only docs
+CLAUDE.md
+README.local.md
+
+# Build outputs
+bin/
+obj/
+out/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+.vsconfig
+
+# Rider
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+*.env.local
+
+# Publish
+publish/
