@@ -34,15 +34,8 @@ public static class ResumeContent
                         DateRange: "Apr 2024 – Present",
                         Bullets: new()
                         {
-                            "Architect and deliver cloud-native microservices in C#, ASP.NET Core, and Entity Framework Core targeting Azure SQL Database, Blob Storage, and Cosmos DB across multiple product lines.",
-                            "Design and expose RESTful APIs consumed by cross-team platform features and external partner integrations, with full OpenAPI documentation and versioning contracts.",
-                            "Drive unit and integration test coverage with xUnit and NSubstitute as a non-negotiable deliverable on every feature, not an afterthought.",
-                            "Own the full SDLC — requirements, implementation, Azure DevOps CI/CD pipeline configuration, deployment, and production incident response.",
                             "Delivered an executive analytics platform on Azure SQL Database, Blob Storage, and Cosmos DB that replaced ad-hoc queries and reduced time-to-insight for stakeholders.",
-                            "Process high-volume healthcare data transformations in Databricks, enabling downstream analytics teams to operate on clean, timely datasets.",
-                            "Build and maintain ETL pipelines and scheduled workflows in Apache Airflow with full auditability, retry logic, and failure alerting.",
-                            "Deploy and operate containerized services on AKS, managing pod scheduling, horizontal scaling, resource quotas, and CI/CD pipeline configuration.",
-                            "Apply deep knowledge of X12 HIPAA EDI transaction sets to implement and validate healthcare data exchange workflows.",
+                            "Own the full SDLC — requirements, implementation, Azure DevOps CI/CD pipeline configuration, deployment, and production incident response.",
                             "Leverage Claude and Cursor throughout the development cycle — from requirements decomposition to code review — compressing feature delivery without sacrificing test coverage or API contract integrity.",
                             "Apply prompt engineering to generate, validate, and iterate on complex business logic implementations, enabling faster turnaround on high-stakes healthcare data processing features.",
                         }
@@ -50,7 +43,16 @@ public static class ResumeContent
                     new Stint(
                         Title:     "Software Engineer",
                         DateRange: "Aug 2022 – Aug 2023",
-                        Bullets: new() { }
+                        Bullets: new()
+                        {
+                            "Architect and deliver cloud-native services in C#, ASP.NET Core, and Entity Framework Core targeting Azure SQL Database, Blob Storage, and Cosmos DB across multiple product lines.",
+                            "Design and expose RESTful APIs consumed by cross-team platform features and external partner integrations, with full OpenAPI documentation and versioning contracts.",
+                            "Drive unit and integration test coverage with xUnit and NSubstitute as a non-negotiable deliverable on every feature, not an afterthought.",
+                            "Process high-volume healthcare data transformations in Databricks, enabling downstream analytics teams to operate on clean, timely datasets.",
+                            "Build and maintain ETL pipelines and scheduled workflows in Apache Airflow with full auditability, retry logic, and failure alerting.",
+                            "Deploy and operate containerized services on AKS, managing pod scheduling, horizontal scaling, resource quotas, and CI/CD pipeline configuration.",
+                            "Apply deep knowledge of X12 HIPAA EDI transaction sets to implement and validate healthcare data exchange workflows.",
+                        }
                     ),
                 }
             ),
@@ -120,7 +122,7 @@ public static class ResumeContent
             new SkillGroup("Frameworks & Libraries",  new() { "ASP.NET Core", "Entity Framework Core", "Blazor", "xUnit", "NSubstitute", "jQuery" }),
             new SkillGroup("Cloud & Infrastructure",  new() { "Microsoft Azure", "Azure Kubernetes Service (AKS)", "Azure SQL Database", "Blob Storage", "Cosmos DB", "Docker" }),
             new SkillGroup("Data & Analytics",        new() { "Databricks", "Apache Airflow", "SQL Server", "ETL Pipelines", "SSRS" }),
-            new SkillGroup("Architecture & Practices",new() { "RESTful API Design", "Microservices", "CI/CD", "SDLC Leadership", "API Versioning", "Cloud-Native Architecture", "Database-Driven Design", "Legacy Modernization" }),
+            new SkillGroup("Architecture & Practices",new() { "RESTful API Design", "CI/CD", "SDLC Leadership", "API Versioning", "Cloud-Native Architecture", "Database-Driven Design", "Legacy Modernization" }),
             new SkillGroup("Healthcare & Compliance", new() { "X12 HIPAA EDI", "HIPAA Compliance", "Healthcare Data Processing", "Claims Processing" }),
             new SkillGroup("AI & Prompt Engineering", new() { "Claude", "Cursor", "GitHub Copilot", "Prompt Engineering", "AI-Assisted Development", "LLM Workflows" }),
             new SkillGroup("Tools & Platforms",       new() { "Git", "Azure DevOps", "Kubernetes", "OpenAPI / Swagger", "Visual Studio", "VS Code" }),
