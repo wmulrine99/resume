@@ -34,10 +34,11 @@ public static class ResumeContent
                         DateRange: "Apr 2024 – Present",
                         Bullets: new()
                         {
-                            "Built an executive analytics platform on Azure SQL Database, Blob Storage, and Cosmos DB that replaced a patchwork of ad-hoc queries stakeholders had been running directly against prod.",
+                            "Built cloud-native services in C#, ASP.NET Core, and Entity Framework Core against Azure SQL Database, Blob Storage, and Cosmos DB across multiple product lines.",
+                            "Built analytics platform on Azure SQL Database, Blob Storage, and Cosmos DB that replaced a patchwork of ad-hoc queries stakeholders had been running directly against prod.",
                             "Own the full SDLC  requirements, implementation, Azure DevOps CI/CD, deployment, and production incident response.",
-                            "Use Claude and Cursor throughout the development cycle, from breaking down requirements to code review, which lets me ship faster without cutting corners on test coverage or API contracts.",
-                            "Rely heavily on prompt engineering to work through complex healthcare data processing logic  useful for getting a second opinion on high-stakes transformations before they go out.",
+                            "Use Claude Code throughout the development cycle, from breaking down requirements to code review, which lets me ship faster without cutting corners on test coverage or API contracts.",
+                            "Leverage prompt engineering to work through complex healthcare data processing logic useful for getting a second opinion on high-stakes transformations before they go out.",
                         }
                     ),
                     new Stint(
