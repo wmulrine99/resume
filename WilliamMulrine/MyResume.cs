@@ -18,8 +18,8 @@ public static class ResumeContent
 
         Links: new()
         {
-            new ResumeLink("GitHub", "https://github.com/wmulrine99/resume"),
-            new ResumeLink("LinkedIn", "https://www.linkedin.com/in/billy-mulrine-000726a0/"),
+            new ResumeLink("LinkedIn", "https://www.linkedin.com/in/billy-mulrine-000726a0/"),                        
+            new ResumeLink("Link to Repo that built this resume", "https://github.com/wmulrine99/resume"),
         },
 
         Experience: new()
