@@ -34,10 +34,10 @@ public static class ResumeContent
                         DateRange: "Apr 2024 – Present",
                         Bullets: new()
                         {
-                            "Delivered an executive analytics platform on Azure SQL Database, Blob Storage, and Cosmos DB that replaced ad-hoc queries and reduced time-to-insight for stakeholders.",
-                            "Own the full SDLC — requirements, implementation, Azure DevOps CI/CD pipeline configuration, deployment, and production incident response.",
-                            "Leverage Claude and Cursor throughout the development cycle — from requirements decomposition to code review — compressing feature delivery without sacrificing test coverage or API contract integrity.",
-                            "Apply prompt engineering to generate, validate, and iterate on complex business logic implementations, enabling faster turnaround on high-stakes healthcare data processing features.",
+                            "Built an executive analytics platform on Azure SQL Database, Blob Storage, and Cosmos DB that replaced a patchwork of ad-hoc queries stakeholders had been running directly against prod.",
+                            "Own the full SDLC  requirements, implementation, Azure DevOps CI/CD, deployment, and production incident response.",
+                            "Use Claude and Cursor throughout the development cycle, from breaking down requirements to code review, which lets me ship faster without cutting corners on test coverage or API contracts.",
+                            "Rely heavily on prompt engineering to work through complex healthcare data processing logic  useful for getting a second opinion on high-stakes transformations before they go out.",
                         }
                     ),
                     new Stint(
@@ -45,13 +45,13 @@ public static class ResumeContent
                         DateRange: "Aug 2022 – Aug 2023",
                         Bullets: new()
                         {
-                            "Architect and deliver cloud-native services in C#, ASP.NET Core, and Entity Framework Core targeting Azure SQL Database, Blob Storage, and Cosmos DB across multiple product lines.",
-                            "Design and expose RESTful APIs consumed by cross-team platform features and external partner integrations, with full OpenAPI documentation and versioning contracts.",
-                            "Drive unit and integration test coverage with xUnit and NSubstitute as a non-negotiable deliverable on every feature, not an afterthought.",
-                            "Process high-volume healthcare data transformations in Databricks, enabling downstream analytics teams to operate on clean, timely datasets.",
-                            "Build and maintain ETL pipelines and scheduled workflows in Apache Airflow with full auditability, retry logic, and failure alerting.",
-                            "Deploy and operate containerized services on AKS, managing pod scheduling, horizontal scaling, resource quotas, and CI/CD pipeline configuration.",
-                            "Apply deep knowledge of X12 HIPAA EDI transaction sets to implement and validate healthcare data exchange workflows.",
+                            "Built cloud-native services in C#, ASP.NET Core, and Entity Framework Core against Azure SQL Database, Blob Storage, and Cosmos DB across multiple product lines.",
+                            "Designed and shipped RESTful APIs used by other teams and external partner integrations, with OpenAPI documentation and versioning.",
+                            "Treated unit and integration test coverage with xUnit and NSubstitute as part of the work, not something to circle back on after the fact.",
+                            "Ran high-volume healthcare data transformations in Databricks so analytics teams had clean, timely data to work with.",
+                            "Built and maintained ETL pipelines and scheduled workflows in Apache Airflow, including retry logic and failure alerting.",
+                            "Deployed and operated containerized services on AKS  pod scheduling, horizontal scaling, resource quotas, and CI/CD pipeline setup.",
+                            "Worked extensively with X12 HIPAA EDI transaction sets to implement and validate healthcare data exchange workflows.",
                         }
                     ),
                 }
@@ -66,10 +66,10 @@ public static class ResumeContent
                         DateRange: "Aug 2023 – Apr 2024",
                         Bullets: new()
                         {
-                            "Owned API versioning strategy and backward-compatibility contracts across multiple service endpoints, with Python tooling to auto-generate and publish OpenAPI documentation as part of the release pipeline.",
-                            "Authored CI/CD pipeline automation and deployment monitoring scripts in Python, eliminating manual handoffs and standardizing the release process across teams.",
-                            "Administered Kubernetes cluster configuration for pod scheduling, resource quotas, and network policy enforcement in a SaaS delivery environment.",
-                            "Developed Python utilities for server provisioning, cross-environment data synchronization, and scheduled backup orchestration, reducing operational toil for the platform team.",
+                            "Owned API versioning and backward-compatibility contracts across multiple service endpoints, with Python tooling to generate and publish OpenAPI docs as part of the release pipeline.",
+                            "Wrote CI/CD pipeline automation and deployment monitoring scripts in Python that removed several manual handoffs from the release process.",
+                            "Managed Kubernetes cluster configuration for pod scheduling, resource quotas, and network policy in a SaaS delivery environment.",
+                            "Built Python utilities for server provisioning, cross-environment data sync, and scheduled backup orchestration that freed the platform team from a lot of recurring manual work.",
                         }
                     ),
                 }
@@ -84,11 +84,11 @@ public static class ResumeContent
                         DateRange: "May 2016 – Aug 2022",
                         Bullets: new()
                         {
-                            "Migrated VB.NET applications to C#, improving performance, reducing technical debt, and closing known security gaps.",
-                            "Built and tuned SQL Server-backed reporting applications handling complex queries against large wildlife datasets.",
-                            "Developed interactive frontend features in JavaScript and jQuery for data entry and field-level validation workflows.",
-                            "Designed web forms and dashboards used to collect and manage wildlife species data and resident survey results.",
-                            "Worked directly with biologists and program staff to translate evolving research requirements into working software.",
+                            "Migrated VB.NET applications to C#, picking up performance improvements and closing a handful of known security issues along the way.",
+                            "Built and tuned SQL Server reporting applications that ran complex queries against large wildlife datasets.",
+                            "Added frontend features in JavaScript and jQuery for data entry and validation across several internal tools.",
+                            "Designed web forms and dashboards for collecting and managing wildlife species data and resident survey results.",
+                            "Worked directly with biologists and program staff to figure out what they actually needed and turn it into working software.",
                         }
                     ),
                 }
@@ -102,10 +102,10 @@ public static class ResumeContent
                 Subtitle: "Rules Engine Re-Architecture · R1 RCM",
                 Bullets: new()
                 {
-                    "Replaced a rigid, code-driven rules engine with a database-driven platform, decoupling business logic from application deployments.",
-                    "Introduced C# generics, reflection, and dynamic dispatch to eliminate the copy-paste patterns that had accumulated across the legacy system.",
-                    "Rule behavior is now fully controlled via database records, so non-engineers can configure and extend rules without code changes.",
-                    "Cut the time to ship new rule implementations and gave the platform a growth path it previously lacked.",
+                    "Replaced a rigid, code-driven rules engine with a database-driven platform so that business logic changes don't require application deployments.",
+                    "Used C# generics, reflection, and dynamic dispatch to get rid of the copy-paste patterns that had built up across the legacy system.",
+                    "Rule behavior is now controlled entirely through database records  non-engineers can configure and extend rules without touching code.",
+                    "Changing rule configurations went from a development cycle to a database change.",
                 },
                 Stats: new()
                 {
