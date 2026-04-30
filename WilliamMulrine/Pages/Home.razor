@@ -299,11 +299,11 @@
     private async Task DownloadAts()
     {
         var filename = string.IsNullOrEmpty(_resume.Name)
-            ? "resume-ats.txt"
-            : _resume.Name.ToLowerInvariant().Replace(' ', '-') + "-ats.txt";
+            ? "resume-ats.doc"
+            : _resume.Name.ToLowerInvariant().Replace(' ', '-') + "-ats.doc";
         var text = JsonSerializer.Serialize(BuildAtsText());
         var file = JsonSerializer.Serialize(filename);
-        var js   = "(function(){var b=new Blob([" + text + "],{type:'text/plain'});"
+        var js   = "(function(){var b=new Blob([" + text + "],{type:'application/msword'});"
                  + "var u=URL.createObjectURL(b);var a=document.createElement('a');"
                  + "a.href=u;a.download=" + file + ";"
                  + "document.body.appendChild(a);a.click();"
