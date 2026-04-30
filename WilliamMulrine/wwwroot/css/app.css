@@ -178,6 +178,8 @@ a:hover { color: var(--accent-light); }
 }
 .dot { color: var(--accent); opacity: 0.5; }
 
+.header-downloads { margin-left: auto; display: flex; gap: 0.5rem; align-items: center; }
+
 
 .download-link {
     font-family: var(--font-mono);
@@ -572,8 +574,7 @@ a:hover { color: var(--accent-light); }
 
     .bg-grid,
     .header-nav,
-    .download-link,
-    .download-link--styled,
+    .header-downloads,
     .resume-footer { display: none; }
 
     .resume-shell {

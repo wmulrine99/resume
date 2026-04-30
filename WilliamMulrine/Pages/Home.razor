@@ -71,10 +71,11 @@
                     <span>@contactParts[i].Text</span>
                 }
             }
-            @if (contactParts.Count > 0) { <span class="dot">·</span> }
-            <button class="download-link--styled" @onclick="DownloadStyled">styled</button>
-            <span class="dot">·</span>
-            <button class="download-link" @onclick="DownloadAts">ats</button>
+            <span class="header-downloads">
+                <button class="download-link--styled" @onclick="DownloadStyled">styled</button>
+                <span class="dot">·</span>
+                <button class="download-link" @onclick="DownloadAts">ats</button>
+            </span>
         </div>
 
     </header>
