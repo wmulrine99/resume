@@ -35,25 +35,11 @@ public static class ResumeContent
                         Bullets: new()
                         {
                             "Built cloud-native services in C#, ASP.NET Core, and Entity Framework Core against Azure SQL Database, Blob Storage, and Cosmos DB across multiple product lines.",
-                            "Mentored junior engineers and led design discussions to drive best practices in API design, test coverage, and cloud architecture.",                            
+                            "Mentored junior engineers and led design discussions to drive best practices in API design, test coverage, and cloud architecture.",
                             "Own the full SDLC  requirements, implementation, Azure DevOps CI/CD, deployment, and production incident response.",
                             "Use Claude Code throughout the development cycle for design brainstorming, code generation, and debugging complex issues",
                             "Leverage prompt engineering to work through complex healthcare data processing logic useful for getting a second opinion on high-stakes transformations before they go out.",
                             "Designed an application that makes a first pass at solving story issues assigned to me through the ADO Board, that creates it's own pull request to validate."
-                        }
-                    ),
-                    new Stint(
-                        Title:     "Software Engineer",
-                        DateRange: "Aug 2022 – Aug 2023",
-                        Bullets: new()
-                        {
-                            "Built cloud-native services in C#, ASP.NET Core, and Entity Framework Core against Azure SQL Database, Blob Storage, and Cosmos DB across multiple product lines.",
-                            "Designed and shipped RESTful APIs used by other teams and external partner integrations, with OpenAPI documentation and versioning.",
-                            "Maintained 90% + unit test coverage with xUnit and NSubstitute.",
-                            "Ran high-volume healthcare data transformations in Databricks so analytics teams had clean, timely data to work with.",
-                            "Built and maintained ETL pipelines and scheduled workflows in Apache Airflow, including retry logic and failure alerting.",
-                            "Deployed and operated containerized services on AKS, including monitoring, logging, and alerting with Azure Monitor and Log Analytics.",
-                            "Worked extensively with X12 HIPAA EDI transaction sets to implement and validate healthcare data exchange workflows.",
                         }
                     ),
                 }
@@ -71,6 +57,27 @@ public static class ResumeContent
                             "Owned API versioning and backward-compatibility contracts across multiple service endpoints, with Python tooling to generate and publish OpenAPI docs as part of the release pipeline.",
                             "Wrote CI/CD pipeline automation and deployment monitoring scripts in Python that removed several manual handoffs from the release process.",
                             "Built Python utilities for server provisioning, cross-environment data sync, and scheduled backup orchestration that freed the platform team from a lot of recurring manual work.",
+                        }
+                    ),
+                }
+            ),
+            new ExperienceItem(
+                Company:  "R1 RCM",
+                Location: "Remote",
+                Stints: new()
+                {
+                    new Stint(
+                        Title:     "Software Engineer",
+                        DateRange: "Aug 2022 – Aug 2023",
+                        Bullets: new()
+                        {
+                            "Built cloud-native services in C#, ASP.NET Core, and Entity Framework Core against Azure SQL Database, Blob Storage, and Cosmos DB across multiple product lines.",
+                            "Designed and shipped RESTful APIs used by other teams and external partner integrations, with OpenAPI documentation and versioning.",
+                            "Maintained 90% + unit test coverage with xUnit and NSubstitute.",
+                            "Ran high-volume healthcare data transformations in Databricks so analytics teams had clean, timely data to work with.",
+                            "Built and maintained ETL pipelines and scheduled workflows in Apache Airflow, including retry logic and failure alerting.",
+                            "Deployed and operated containerized services on AKS, including monitoring, logging, and alerting with Azure Monitor and Log Analytics.",
+                            "Worked extensively with X12 HIPAA EDI transaction sets to implement and validate healthcare data exchange workflows.",
                         }
                     ),
                 }
