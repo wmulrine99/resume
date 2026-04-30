@@ -58,26 +58,22 @@
                     if (!string.IsNullOrEmpty(l.Name) && !string.IsNullOrEmpty(l.Link))
                         contactParts.Add((l.Name, l.Link));
         }
-        @if (contactParts.Count > 0)
-        {
-            <div class="header-contact">
-                @for (int i = 0; i < contactParts.Count; i++)
+        <div class="header-contact">
+            @for (int i = 0; i < contactParts.Count; i++)
+            {
+                if (i > 0) { <span class="dot">·</span> }
+                @if (contactParts[i].Href != null)
                 {
-                    if (i > 0) { <span class="dot">·</span> }
-                    @if (contactParts[i].Href != null)
-                    {
-                        <a href="@contactParts[i].Href" target="_blank" rel="noopener noreferrer">@contactParts[i].Text</a>
-                    }
-                    else
-                    {
-                        <span>@contactParts[i].Text</span>
-                    }
+                    <a href="@contactParts[i].Href" target="_blank" rel="noopener noreferrer">@contactParts[i].Text</a>
                 }
-            </div>
-        }
-
-        <div class="header-downloads">
+                else
+                {
+                    <span>@contactParts[i].Text</span>
+                }
+            }
+            @if (contactParts.Count > 0) { <span class="dot">·</span> }
             <button class="download-link--styled" @onclick="DownloadStyled">styled</button>
+            <span class="dot">·</span>
             <button class="download-link" @onclick="DownloadAts">ats</button>
         </div>
 
